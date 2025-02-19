@@ -11,7 +11,7 @@ class PenjualanController extends Controller
 
     public function index(Request $request)
     {
-        $query = Penjualan::with('barang', 'with');
+        $query = Penjualan::with('barang', 'user'); // Corrected 'with' method usage
         if ($request->has('search')) {
             $query->whereHas('barang', function ($query) use ($request) {
                 $query->where('nama_barang', 'like', '%' . $request->search . '%');
